@@ -28,10 +28,10 @@ const actionHistory: ActionLog[] = [
   },
 ];
 
-const actionHistoryElement = document.querySelector(
-  ".actionHistory"
-) as HTMLElement;
-console.log(actionHistoryElement);
+const actionSelectionElement = document.querySelector("#actionSelection") as HTMLElement;
+updateActionSelection(actions, actionSelectionElement);
+
+const actionHistoryElement = document.querySelector(".actionHistory") as HTMLElement;
 if (actionHistoryElement) {
   showActionHistory(actionHistory, actionHistoryElement);
 }
@@ -52,4 +52,14 @@ function renderActionHistory(action: ActionLog) {
   <p>Start-Time: ${action.startTime.toLocaleString()}</p>
   <p>End-Time: ${action.endTime.toLocaleString()}</p>
   `;
+}
+
+function updateActionSelection(actionsArray: Array, container: HTMLElement) {
+    container.innerHTML = `${actionsArray.map(renderActionSelection).join("\n")}`
+}
+
+function renderActionSelection(action: Action) {
+    return `
+    <option>${action}</option>
+    `
 }

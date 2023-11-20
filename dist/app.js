@@ -21,8 +21,9 @@ const actionHistory = [
         endTime: new Date(),
     },
 ];
+const actionSelectionElement = document.querySelector("#actionSelection");
+updateActionSelection(actions, actionSelectionElement);
 const actionHistoryElement = document.querySelector(".actionHistory");
-console.log(actionHistoryElement);
 if (actionHistoryElement) {
     showActionHistory(actionHistory, actionHistoryElement);
 }
@@ -42,4 +43,12 @@ function renderActionHistory(action) {
   <p>Start-Time: ${action.startTime.toLocaleString()}</p>
   <p>End-Time: ${action.endTime.toLocaleString()}</p>
   `;
+}
+function updateActionSelection(actionsArray, container) {
+    container.innerHTML = `${actionsArray.map(renderActionSelection).join("\n")}`;
+}
+function renderActionSelection(action) {
+    return `
+    <option>${action}</option>
+    `;
 }
