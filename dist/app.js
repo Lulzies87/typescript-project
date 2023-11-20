@@ -1,22 +1,37 @@
 const actions = [
     {
-        action: "Study",
+        name: "Study",
         startTime: new Date(),
         endTime: new Date(),
     },
     {
-        action: "Exercise",
+        name: "Exercise",
         startTime: new Date(),
         endTime: new Date(),
     },
     {
-        action: "Read a book",
+        name: "Read a book",
         startTime: new Date(),
         endTime: new Date(),
     },
     {
-        action: "Meditate",
+        name: "Meditate",
         startTime: new Date(),
         endTime: new Date(),
     },
 ];
+const actionListElement = document.querySelector(".actionList");
+console.log(actionListElement);
+if (actionListElement) {
+    showActionList(actions, actionListElement);
+}
+function showActionList(actions, container) {
+    container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+}
+function renderActionList(action) {
+    return `
+  <p>Action: ${action.name}</p>
+  <p>Start-Time: ${action.startTime.toLocaleString()}</p>
+  <p>End-Time: ${action.endTime.toLocaleString()}</p>
+  `;
+}

@@ -1,24 +1,43 @@
-type Action = { action: string; startTime: Date; endTime: Date };
+type Action = { name: string; startTime: Date; endTime: Date };
 const actions = [
   {
-    action: "Study",
+    name: "Study",
     startTime: new Date(),
     endTime: new Date(),
   },
   {
-    action: "Exercise",
+    name: "Exercise",
     startTime: new Date(),
     endTime: new Date(),
   },
   {
-    action: "Read a book",
+    name: "Read a book",
     startTime: new Date(),
     endTime: new Date(),
   },
   {
-    action: "Meditate",
+    name: "Meditate",
     startTime: new Date(),
     endTime: new Date(),
   },
-  
 ] as Action[];
+
+
+const actionListElement = document.querySelector(".actionList") as HTMLElement;
+console.log(actionListElement);
+if (actionListElement) {
+  showActionList(actions, actionListElement);
+}
+
+function showActionList(actions: Action[], container: HTMLElement) {
+  container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+}
+
+function renderActionList(action: Action) {
+  return `
+  <p>Action: ${action.name}</p>
+  <p>Start-Time: ${action.startTime.toLocaleString()}</p>
+  <p>End-Time: ${action.endTime.toLocaleString()}</p>
+  `;
+}
+
