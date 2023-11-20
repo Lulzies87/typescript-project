@@ -26,7 +26,12 @@ if (actionListElement) {
     showActionList(actions, actionListElement);
 }
 function showActionList(actions, container) {
-    container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+    if (actions.length === 0) {
+        container.innerHTML = `<p>no actions yet!</p>`;
+    }
+    else {
+        container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+    }
 }
 function renderActionList(action) {
     return `

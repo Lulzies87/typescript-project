@@ -22,7 +22,6 @@ const actions = [
   },
 ] as Action[];
 
-
 const actionListElement = document.querySelector(".actionList") as HTMLElement;
 console.log(actionListElement);
 if (actionListElement) {
@@ -30,7 +29,11 @@ if (actionListElement) {
 }
 
 function showActionList(actions: Action[], container: HTMLElement) {
-  container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+  if (actions.length === 0) {
+    container.innerHTML = `<p>no actions yet!</p>`;
+  } else {
+    container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+  }
 }
 
 function renderActionList(action: Action) {
@@ -40,4 +43,3 @@ function renderActionList(action: Action) {
   <p>End-Time: ${action.endTime.toLocaleString()}</p>
   `;
 }
-
