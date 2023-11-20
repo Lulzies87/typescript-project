@@ -33,6 +33,9 @@ body {
   grid-template-columns: 1fr 2fr 2fr;
 }
 
+.addActionForm {
+  margin-bottom: 0.8rem;
+}
 .addActionForm #last-input {
   display: inline;
 }
