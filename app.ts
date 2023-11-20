@@ -54,7 +54,7 @@ function renderActionHistory(action: ActionLog) {
   `;
 }
 
-function updateActionSelection(actionsArray: Array, container: HTMLElement) {
+function updateActionSelection(actionsArray: typeof actions, container: HTMLElement) {
     container.innerHTML = `${actionsArray.map(renderActionSelection).join("\n")}`
 }
 
