@@ -17,12 +17,29 @@
 
     <article class="section">
         <h2>Log Action</h2>
-        <form name="log-action">
-            <label for="actionSelection">Action:</label>
-            <select name="action" id="actionSelection"></select>
 
+        <form class="addActionForm" name="log-action">
+
+            <div class="form-input">
+                <label for="actionSelection">Action:</label>
+                <select name="actionSelection" id="actionSelection"></select>
+            </div>
+
+            <div class="form-input">
+                <label for="startTime">Start Time:</label>
+                <input name="startTime" id="startTime" type="datetime-local" required />
+            </div>
+
+            <div class="form-input" id="last-input">
+                <label for="endTime">End Time:</label>
+                <input name="endTime" id="endTime" type="datetime-local" required />
+            </div>
+
+            <button class="addActionForm__btn">Add</button>
         </form>
+
         <h3>Action History:</h3>
+
         <p class="actionHistory"></p>
     </article>
 
