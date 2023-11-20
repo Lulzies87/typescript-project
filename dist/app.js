@@ -1,4 +1,5 @@
-const actions = [
+const actions = ["Study", "Exercise", "Read a book", "Meditate"];
+const actionHistory = [
     {
         name: "Study",
         startTime: new Date(),
@@ -20,20 +21,22 @@ const actions = [
         endTime: new Date(),
     },
 ];
-const actionListElement = document.querySelector(".actionList");
-console.log(actionListElement);
-if (actionListElement) {
-    showActionList(actions, actionListElement);
+const actionHistoryElement = document.querySelector(".actionHistory");
+console.log(actionHistoryElement);
+if (actionHistoryElement) {
+    showActionHistory(actionHistory, actionHistoryElement);
 }
-function showActionList(actions, container) {
-    if (actions.length === 0) {
+function showActionHistory(actionHistory, container) {
+    if (actionHistory.length === 0) {
         container.innerHTML = `<p>no actions yet!</p>`;
     }
     else {
-        container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+        container.innerHTML = `${actionHistory
+            .map(renderActionHistory)
+            .join("\n")}`;
     }
 }
-function renderActionList(action) {
+function renderActionHistory(action) {
     return `
   <p>Action: ${action.name}</p>
   <p>Start-Time: ${action.startTime.toLocaleString()}</p>

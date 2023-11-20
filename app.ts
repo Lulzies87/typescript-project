@@ -1,5 +1,11 @@
-type Action = { name: string; startTime: Date; endTime: Date };
-const actions = [
+const actions = ["Study", "Exercise", "Read a book", "Meditate"] as const;
+type Action = (typeof actions)[number];
+interface ActionLog {
+  name: Action;
+  startTime: Date;
+  endTime: Date;
+}
+const actionHistory: ActionLog[] = [
   {
     name: "Study",
     startTime: new Date(),
@@ -20,23 +26,27 @@ const actions = [
     startTime: new Date(),
     endTime: new Date(),
   },
-] as Action[];
+];
 
-const actionListElement = document.querySelector(".actionList") as HTMLElement;
-console.log(actionListElement);
-if (actionListElement) {
-  showActionList(actions, actionListElement);
+const actionHistoryElement = document.querySelector(
+  ".actionHistory"
+) as HTMLElement;
+console.log(actionHistoryElement);
+if (actionHistoryElement) {
+  showActionHistory(actionHistory, actionHistoryElement);
 }
 
-function showActionList(actions: Action[], container: HTMLElement) {
-  if (actions.length === 0) {
+function showActionHistory(actionHistory: ActionLog[], container: HTMLElement) {
+  if (actionHistory.length === 0) {
     container.innerHTML = `<p>no actions yet!</p>`;
   } else {
-    container.innerHTML = `${actions.map(renderActionList).join("\n")}`;
+    container.innerHTML = `${actionHistory
+      .map(renderActionHistory)
+      .join("\n")}`;
   }
 }
 
-function renderActionList(action: Action) {
+function renderActionHistory(action: ActionLog) {
   return `
   <p>Action: ${action.name}</p>
   <p>Start-Time: ${action.startTime.toLocaleString()}</p>

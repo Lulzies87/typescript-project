@@ -27,7 +27,7 @@ body {
   margin: 0.6rem 0;
 }
 
-.actionList {
+.actionHistory {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   font-size: 0.8rem;
