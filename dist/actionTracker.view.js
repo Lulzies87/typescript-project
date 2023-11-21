@@ -1,4 +1,13 @@
-export function showActionHistory(actionHistory, container) {
+import { mostPerformedAction } from "./actionTracker.model.js";
+import { actionHistory } from "./app.js";
+export function updateView() {
+    const actionHistoryElement = document.querySelector(".actionHistory");
+    if (actionHistoryElement) {
+        showActionHistory(actionHistory, actionHistoryElement);
+    }
+    renderStatistics();
+}
+function showActionHistory(actionHistory, container) {
     if (actionHistory.length === 0) {
         container.innerHTML = `<p>no actions yet!</p>`;
     }
@@ -31,4 +40,7 @@ function formatTime(time) {
         hour: "2-digit",
         minute: "2-digit",
     });
+}
+function renderStatistics() {
+    document.getElementById("mostPerformed").innerHTML = `<p>${mostPerformedAction(actionHistory)}</p>`;
 }

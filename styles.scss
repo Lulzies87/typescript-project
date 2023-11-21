@@ -41,7 +41,7 @@ h2 {
 
 .actionHistory {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1.5fr 2fr 2fr;
 
 }
 
@@ -68,5 +68,14 @@ h2 {
         aspect-ratio: 1;
         padding: 1rem 0;
         font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            font-weight: normal;
+            font-size: 1.4rem;
+            color: antiquewhite;
+        }
     }
 }
