@@ -49,3 +49,20 @@ h2 {
 .addActionForm #last-input {
   display: inline;
 }
+
+.statistics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0.6rem 0;
+}
+.statistics__stat {
+  border: 1px solid #183D3D;
+  border-radius: 10px;
+  text-align: center;
+  justify-self: center;
+  width: 28ch;
+  aspect-ratio: 1;
+  padding: 1rem 0;
+  font-weight: bold;
+}
