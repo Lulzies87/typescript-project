@@ -15,13 +15,21 @@ html {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0f0f0f;
-  color: #9d9d8c;
+  background-color: #040D12;
+  color: #93B1A6;
   padding: 1rem;
 }
 
+h1 {
+  color: #5C8374;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
 .section {
-  border: 2px solid rgba(245, 245, 220, 0.2);
+  border: 2px solid #183D3D;
   border-radius: 10px;
   padding: 0.4rem 0.8rem;
   margin: 0.6rem 0;

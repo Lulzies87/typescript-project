@@ -1,1 +1,1 @@
-export const actions = ["Study", "Exercise", "Read a book", "Meditate"];
+export const actions = ["Study", "Exercise", "Read a book", "Meditate", "Gaming"];
