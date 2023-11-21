@@ -18,6 +18,7 @@ export function mostPerformedAction(actionHistory: ActionLog[]) {
 
   actionHistory.forEach((actionLog) => {
     if (countAction(actionHistory, actionLog.name) > count) {
+      count = countAction(actionHistory, actionLog.name);
       mostPerformed = actionLog.name;
     }
   });
