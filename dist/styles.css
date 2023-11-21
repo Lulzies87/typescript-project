@@ -18,6 +18,8 @@ body {
   background-color: #040D12;
   color: #93B1A6;
   padding: 1rem;
+  max-width: 80ch;
+  margin-inline: auto;
 }
 
 h1 {
