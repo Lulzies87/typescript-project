@@ -21,7 +21,6 @@ if (actionHistoryElement) {
 }
 
 document.forms.namedItem("addActionForm")?.addEventListener("submit", (e) => {
-  e.preventDefault();
 
   const formData = new FormData(e.target as HTMLFormElement);
 
