@@ -1,26 +1,9 @@
 const actions = ["Study", "Exercise", "Read a book", "Meditate"];
-const actionHistory = [
-    {
-        name: "Study",
-        startTime: new Date(),
-        endTime: new Date(),
-    },
-    {
-        name: "Exercise",
-        startTime: new Date(),
-        endTime: new Date(),
-    },
-    {
-        name: "Read a book",
-        startTime: new Date(),
-        endTime: new Date(),
-    },
-    {
-        name: "Meditate",
-        startTime: new Date(),
-        endTime: new Date(),
-    },
-];
+let actionHistory = [];
+const retrieveActionHistory = localStorage.getItem("actionHistory");
+if (retrieveActionHistory) {
+    actionHistory = JSON.parse(retrieveActionHistory);
+}
 const actionSelectionElement = document.querySelector("#actionSelection");
 updateActionSelection(actions, actionSelectionElement);
 const actionHistoryElement = document.querySelector(".actionHistory");
@@ -73,6 +56,7 @@ function parseData(input, key) {
 }
 function logAction(actionLog, actionHistory) {
     actionHistory.push(actionLog);
+    localStorage.setItem("actionHistory", JSON.stringify(actionHistory));
 }
 function formatTime(time) {
     return new Date(time).toLocaleString("en-GB", {

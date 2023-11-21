@@ -5,37 +5,17 @@ interface ActionLog {
   startTime: Date;
   endTime: Date;
 }
-const actionHistory: ActionLog[] = [
-  {
-    name: "Study",
-    startTime: new Date(),
-    endTime: new Date(),
-  },
-  {
-    name: "Exercise",
-    startTime: new Date(),
-    endTime: new Date(),
-  },
-  {
-    name: "Read a book",
-    startTime: new Date(),
-    endTime: new Date(),
-  },
-  {
-    name: "Meditate",
-    startTime: new Date(),
-    endTime: new Date(),
-  },
-];
 
-const actionSelectionElement = document.querySelector(
-  "#actionSelection"
-) as HTMLElement;
+let actionHistory: ActionLog[] = [];
+const retrieveActionHistory = localStorage.getItem("actionHistory");
+if (retrieveActionHistory) {
+    actionHistory = JSON.parse(retrieveActionHistory);
+}
+
+const actionSelectionElement = document.querySelector("#actionSelection") as HTMLElement;
 updateActionSelection(actions, actionSelectionElement);
 
-const actionHistoryElement = document.querySelector(
-  ".actionHistory"
-) as HTMLElement;
+const actionHistoryElement = document.querySelector(".actionHistory") as HTMLElement;
 if (actionHistoryElement) {
   showActionHistory(actionHistory, actionHistoryElement);
 }
@@ -96,6 +76,7 @@ function parseData(input: any | null, key: string) {
 
 function logAction(actionLog: ActionLog, actionHistory: ActionLog[]) {
   actionHistory.push(actionLog);
+  localStorage.setItem("actionHistory", JSON.stringify(actionHistory));
 }
 
 function formatTime(time: Date) {
