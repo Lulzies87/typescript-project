@@ -19,3 +19,27 @@ export function mostPerformedAction(actionHistory) {
 function countAction(actionHistory, action) {
     return actionHistory.filter((actionLog) => actionLog.name === action).length;
 }
+function getDuration(action) {
+    const startTime = new Date(action.startTime);
+    const endTime = new Date(action.endTime);
+    return endTime.getTime() - startTime.getTime();
+}
+export function longestSessionDuration(actionHistory) {
+    actionHistory.forEach((actionLog) => {
+    });
+}
+function padTo2Digits(num) {
+    return num.toString().padStart(2, "0");
+}
+export function getDurationInHours(date1, date2) {
+    const durationMs = getDurationInMs(date1, date2);
+    const seconds = Math.floor(durationMs / 1000) % 60;
+    const minutes = Math.floor((durationMs / 1000 / 60) % 60);
+    const hours = Math.floor((durationMs / 1000 / 60 / 60) % 24);
+    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}`;
+}
+export function getDurationInMs(date1, date2) {
+    date1 = new Date(date1);
+    date2 = new Date(date2);
+    return Math.abs(date1.getTime() - date2.getTime());
+}

@@ -10,6 +10,7 @@ export interface ActionLog {
   name: Action;
   startTime: Date;
   endTime: Date;
+  durationInMs?: number;
 }
 
 export function mostPerformedAction(actionHistory: ActionLog[]) {
@@ -28,4 +29,36 @@ export function mostPerformedAction(actionHistory: ActionLog[]) {
 
 function countAction(actionHistory: ActionLog[], action: Action) {
   return actionHistory.filter((actionLog) => actionLog.name === action).length;
+}
+
+function getDuration(action: ActionLog) {
+  const startTime = new Date(action.startTime);
+  const endTime = new Date(action.endTime);
+
+  return endTime.getTime() - startTime.getTime();
+}
+
+export function longestSessionDuration(actionHistory: ActionLog[]) {
+    actionHistory.forEach((actionLog) => {
+        
+    });
+}
+
+function padTo2Digits(num: number) {
+  return num.toString().padStart(2, "0");
+}
+
+export function getDurationInHours(date1: Date, date2: Date) {
+  const durationMs = getDurationInMs(date1, date2);
+  const seconds = Math.floor(durationMs / 1000) % 60;
+  const minutes = Math.floor((durationMs / 1000 / 60) % 60);
+  const hours = Math.floor((durationMs / 1000 / 60 / 60) % 24);
+
+  return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}`;
+}
+
+export function getDurationInMs(date1: Date, date2: Date) {
+  date1 = new Date(date1);
+  date2 = new Date(date2);
+  return Math.abs(date1.getTime() - date2.getTime());
 }

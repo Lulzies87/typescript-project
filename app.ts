@@ -1,6 +1,6 @@
 import { logAction, parseData } from "./actionTracker.controller.js";
-import {  ActionLog, actions, mostPerformedAction} from "./actionTracker.model.js";
-import { updateView, updateActionSelection} from "./actionTracker.view.js";
+import { ActionLog, actions, getDurationInMs } from "./actionTracker.model.js";
+import { updateView, updateActionSelection } from "./actionTracker.view.js";
 
 export let actionHistory: ActionLog[] = [];
 const retrieveActionHistory = localStorage.getItem("actionHistory");
@@ -21,9 +21,13 @@ document.forms.namedItem("addActionForm")?.addEventListener("submit", (e) => {
     startTime: parseData(formData.get("startTime"), "startTime"),
     endTime: parseData(formData.get("endTime"), "endTime"),
   };
+  
+  actionObject.durationInMs = getDurationInMs(actionObject.endTime, actionObject.startTime);
 
   logAction(actionObject, actionHistory);
   updateView();
 });
 
 updateView();
+
+console.log(actionHistory);

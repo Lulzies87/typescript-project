@@ -1,4 +1,4 @@
-import { Action, ActionLog, actions, mostPerformedAction} from "./actionTracker.model.js";
+import { Action, ActionLog, actions, getDurationInHours, mostPerformedAction} from "./actionTracker.model.js";
 import { actionHistory } from "./app.js";
 
 export function updateView() {
@@ -26,6 +26,7 @@ function showActionHistory(
 function renderActionHistory(action: ActionLog) {
   return `
     <p>Action: ${action.name}</p>
+    <p>${getDurationInHours(action.endTime, action.startTime)} hr/s</p>
     <p>Start-Time: ${formatTime(action.startTime)}</p>
     <p>End-Time: ${formatTime(action.endTime)}</p>
     `;
