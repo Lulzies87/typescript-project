@@ -1,10 +1,11 @@
-import { getDurationInHours, mostPerformedAction } from "./actionTracker.model.js";
-import { actionHistory } from "./app.js";
+import { actionHistory, actions, getDurationInHours, mostPerformedAction } from "./actionTracker.model.js";
+export function loadActions() {
+    const actionSelectionElement = document.querySelector("#actionSelection");
+    updateActionSelection(actions, actionSelectionElement);
+}
 export function updateView() {
     const actionHistoryElement = document.querySelector(".actionHistory");
-    if (actionHistoryElement) {
-        showActionHistory(actionHistory, actionHistoryElement);
-    }
+    showActionHistory(actionHistory, actionHistoryElement);
     renderStatistics();
 }
 function showActionHistory(actionHistory, container) {
@@ -25,7 +26,7 @@ function renderActionHistory(action) {
     <p>End-Time: ${formatTime(action.endTime)}</p>
     `;
 }
-export function updateActionSelection(actionsArray, container) {
+function updateActionSelection(actionsArray, container) {
     container.innerHTML = `${actionsArray.map(renderActionSelection).join("\n")}`;
 }
 function renderActionSelection(action) {

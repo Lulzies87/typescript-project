@@ -5,6 +5,11 @@ export const actions = [
     "Meditate",
     "Gaming",
 ];
+export let actionHistory = [];
+const retrieveActionHistory = localStorage.getItem("actionHistory");
+if (retrieveActionHistory) {
+    actionHistory = JSON.parse(retrieveActionHistory);
+}
 export function mostPerformedAction(actionHistory) {
     let mostPerformed = "?";
     let count = 0;
@@ -19,14 +24,8 @@ export function mostPerformedAction(actionHistory) {
 function countAction(actionHistory, action) {
     return actionHistory.filter((actionLog) => actionLog.name === action).length;
 }
-function getDuration(action) {
-    const startTime = new Date(action.startTime);
-    const endTime = new Date(action.endTime);
-    return endTime.getTime() - startTime.getTime();
-}
 export function longestSessionDuration(actionHistory) {
-    actionHistory.forEach((actionLog) => {
-    });
+    actionHistory.forEach((actionLog) => { });
 }
 function padTo2Digits(num) {
     return num.toString().padStart(2, "0");

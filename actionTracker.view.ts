@@ -1,11 +1,14 @@
-import { Action, ActionLog, actions, getDurationInHours, mostPerformedAction} from "./actionTracker.model.js";
-import { actionHistory } from "./app.js";
+import { Action, ActionLog, actionHistory, actions, getDurationInHours, mostPerformedAction} from "./actionTracker.model.js";
+
+export function loadActions() {
+  const actionSelectionElement = document.querySelector("#actionSelection") as HTMLElement;
+
+  updateActionSelection(actions, actionSelectionElement);
+}
 
 export function updateView() {
   const actionHistoryElement = document.querySelector(".actionHistory") as HTMLElement;
-  if (actionHistoryElement) {
-    showActionHistory(actionHistory, actionHistoryElement);
-  }
+  showActionHistory(actionHistory, actionHistoryElement);
 
   renderStatistics();
 }
@@ -32,7 +35,7 @@ function renderActionHistory(action: ActionLog) {
     `;
 }
 
-export function updateActionSelection(
+function updateActionSelection(
   actionsArray: typeof actions,
   container: HTMLElement
 ) {
